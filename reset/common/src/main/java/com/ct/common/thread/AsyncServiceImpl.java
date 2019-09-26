@@ -1,7 +1,6 @@
 package com.ct.common.thread;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.ct.common.annotation.Log;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +11,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AsyncServiceImpl implements AsyncService{
-    /**
-     * The Logger.
-     *
-     * @author chen.cheng
-     */
-    private Logger logger = LoggerFactory.getLogger(AsyncServiceImpl.class);
 
     /**
      * Execute async.
@@ -26,13 +19,8 @@ public class AsyncServiceImpl implements AsyncService{
      */
     @Override
     @Async("asyncServiceExecutor")
-    public void executeAsync() {
-        logger.info("start executeAsync");
-        try{
-            Thread.sleep(10000);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        logger.info("end executeAsync");
+    @Log(title = "AsyncServiceImpl",action = "executeAsync")
+    public void executeAsync() throws Exception {
+        Thread.sleep(10000);
     }
 }

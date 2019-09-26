@@ -14,5 +14,5 @@ public interface AsyncService {
      *
      * @author chen.cheng
      */
-    void executeAsync();
+    void executeAsync() throws Exception;
 }

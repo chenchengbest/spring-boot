@@ -22,8 +22,6 @@ import java.lang.reflect.Method;
 @Aspect
 @Component("logAspect")
 public class LogAspect {
-
-
     /**
      * The constant log.
      *
