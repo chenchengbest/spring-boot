@@ -1,0 +1,60 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: ct_gateway
+  datasource:
+      driverClassName: org.mariadb.jdbc.Driver
+      url: jdbc:mariadb://10.45.70.17:3306/devcoper_330800?zeroDateTimeBehavior=convertToNull&characterEncoding=utf8
+      username: dev
+      password: iwhaleC@
+      type: com.alibaba.druid.pool.DruidDataSource
+      # 连接池的配置信息
+      # 初始化大小，最小等待连接数量，最大等待连接数量，最大连接数
+      initialSize: 5
+      minIdle: 5
+      maxIdle: 5
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: true
+      testOnReturn: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      poolPreparedStatements: false
+      maxPoolPreparedStatementPerConnectionSize: 20
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall,log4j
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # 合并多个DruidDataSource的监控数据
+      #spring.datasource.useGlobalDataSourceStat=true
+  cloud:
+    gateway:
+      routes:
+      - id: service1_v1
+        # 这里可以配置为其它要路由的地址
+        uri: http://localhost:8081/v1
+        predicates:
+        - Path=/test
+        # 设置权重 为95%
+        - Weight=service1, 95
+      - id: service1_v2
+        # 这里可以配置为其它要路由的地址
+        uri: http://localhost:8081/v2
+        predicates:
+        - Path=/test
+        # 设置权重 为5%
+        - Weight=service1, 5
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
