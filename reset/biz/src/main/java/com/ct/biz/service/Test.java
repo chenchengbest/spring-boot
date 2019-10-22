@@ -38,6 +38,7 @@ public class Test {
         ExecutorService executorService = Executors.newCachedThreadPool();
         final Semaphore semaphore = new Semaphore(500);
         final CountDownLatch countDownLatch = new CountDownLatch(2000);
+
         for (int i = 0; i < 2000;
              i++) {
             executorService.execute(() -> {
