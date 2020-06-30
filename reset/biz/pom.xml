@@ -27,6 +27,10 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.ct</groupId>
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>

@@ -1,5 +1,8 @@
 package com.ct.biz.controller;
 
+import com.ct.biz.bean.VipVO;
+import com.ct.biz.strategy.IVipStrategy;
+import com.ct.biz.strategy.VipStrategyResolver;
 import com.ct.common.annotation.Log;
 import com.ct.common.annotation.PassToken;
 import com.ct.common.bean.Result;
@@ -10,10 +13,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 /**
  * The type Sample controller.
@@ -31,6 +35,9 @@ public class SampleController {
      * @author chen.cheng
      */
     private final Logger logger = LoggerFactory.getLogger(SampleController.class);
+
+    @Autowired
+    private VipStrategyResolver vipStrategyResolver;
     /**
      * The Async service.
      *
@@ -46,9 +53,9 @@ public class SampleController {
      * @author chen.cheng
      */
     @ApiOperation(value = "get", notes = "get")
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     @PassToken
-    @Log(title = "SampleController",action = "test")
+    @Log(title = "SampleController", action = "test")
     public Result submit() throws Exception {
         logger.info("start submit");
         //调用service层的任务
@@ -56,4 +63,15 @@ public class SampleController {
         logger.info("end submit");
         return Result.success("");
     }
+
+    @ApiOperation(value = "get", notes = "测试策略模式，结合spring 容器特性")
+    @RequestMapping(value = "/strategy", method = RequestMethod.GET)
+    @PassToken
+    @Log(title = "SampleController", action = "test")
+    public Result strategy(@Valid VipVO vipCode) throws Exception {
+        IVipStrategy iVipStrategy = vipStrategyResolver.getHandler(vipCode.getVipCode());
+        iVipStrategy.compute(1000L);
+        return Result.success("");
+    }
+
 }
