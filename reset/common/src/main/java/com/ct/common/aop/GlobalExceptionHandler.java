@@ -32,11 +32,6 @@ import java.util.List;
 public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
     /**
-     * The constant logExceptionFormat.
-     */
-    private static final String LOG_EXCEPTION_FORMAT = "Capture Exception By GlobalExceptionHandler: Code: %s Detail: %s";
-
-    /**
      * Runtime exception handler result data bean.
      *
      * @param ex the ex
