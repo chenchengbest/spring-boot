@@ -3,6 +3,7 @@ package com.ct.biz.controller;
 import com.ct.biz.bean.VipVO;
 import com.ct.biz.dao.impala.ITfcImpalaScheduleDAO;
 import com.ct.biz.dao.mysql.TfcEpdDao;
+import com.ct.biz.service.LotteryServiceImpl;
 import com.ct.biz.strategy.IVipStrategy;
 import com.ct.biz.strategy.VipStrategyResolver;
 import com.ct.common.annotation.Log;
@@ -43,6 +44,9 @@ public class SampleController {
 
     @Autowired
     private ITfcImpalaScheduleDAO iTfcImpalaScheduleDAO;
+
+    @Autowired
+    private LotteryServiceImpl lotteryService;
 
     @Autowired
     private TfcEpdDao tfcEpdDao;
@@ -95,4 +99,18 @@ public class SampleController {
     public Result map() throws Exception {
         return Result.success(tfcEpdDao.queryMaxTimeStampOfSatur());
     }
+    /**
+     * Submit string.
+     *
+     * @return the string
+     * @author chen.cheng
+     */
+    @ApiOperation(value = "observer pattern", notes = "observer pattern")
+    @RequestMapping(value = "/observer", method = RequestMethod.GET)
+    @PassToken
+    @Log(title = "SampleController", action = "observer")
+    public Result observer() throws Exception {
+        return Result.success(lotteryService.draw("4567"));
+    }
+
 }
