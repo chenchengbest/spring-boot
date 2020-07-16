@@ -24,7 +24,7 @@ import com.ct.common.aop.SQLStatsInterceptor;
  * @author chen.cheng
  */
 @Configuration
-@MapperScan(basePackages = "com.ztesoft.timer.dao.mysql", sqlSessionTemplateRef  = "primarySqlSessionTemplate")
+@MapperScan(basePackages = "com.ct.biz.dao.mysql", sqlSessionTemplateRef  = "primarySqlSessionTemplate")
 public class MySqlSqlSessionTemplate {
 
     @Autowired

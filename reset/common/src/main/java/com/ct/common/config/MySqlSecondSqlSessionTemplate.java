@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * @author chen.cheng
  */
 @Configuration
-@MapperScan(basePackages = "com.ztesoft.timer.dao.trafficIndex", sqlSessionTemplateRef  = "secondarySqlSessionTemplate")
+@MapperScan(basePackages = "com.ct.biz.dao.trafficIndex", sqlSessionTemplateRef  = "secondarySqlSessionTemplate")
 public class MySqlSecondSqlSessionTemplate {
     /**
      * Primary sql session factory sql session factory.

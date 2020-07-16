@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ct.biz.dao.impala.ITfcImpalaScheduleDAO">
+    <select id="queryTfcInterFlowMaxTimeStamp"
+            resultType="java.lang.String">
+        SELECT
+         max(`timestamp`) as 'timestamp'
+        FROM
+         adm_tfc_opt_flow_inter_1h_rt
+        WHERE
+        y_ = '2020'
+        AND m_ = '06'
+        AND d_ = '06'
+    </select>
+</mapper>

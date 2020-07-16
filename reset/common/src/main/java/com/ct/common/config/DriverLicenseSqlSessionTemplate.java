@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * @author chen.cheng
  */
 @Configuration
-@MapperScan(basePackages = "com.ztesoft.timer.dao.oracle", sqlSessionTemplateRef  = "oracleSqlSessionTemplate")
+@MapperScan(basePackages = "com.ct.biz.dao.oracle", sqlSessionTemplateRef  = "oracleSqlSessionTemplate")
 public class DriverLicenseSqlSessionTemplate {
 
     /**

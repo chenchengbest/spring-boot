@@ -70,7 +70,6 @@ public class LogAspect {
      */
     private void handleLog(JoinPoint joinPoint, Exception e) {
         try {
-
             // 获得注解
             Log controllerLog = getAnnotationLog(joinPoint);
             if (controllerLog == null) {

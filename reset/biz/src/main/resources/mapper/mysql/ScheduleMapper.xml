@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ct.biz.dao.mysql.TfcEpdDao">
+    <insert id="insertSegmentFlow" parameterType="java.util.ArrayList">
+        INSERT INTO adm_tfc_opt_flow_segment (
+        `segment_id`,
+        `flow`,
+        `updatetime`
+        )
+        VALUES
+        <foreach collection="segmentFlows" item="segmentFlow" separator=",">
+            (#{segmentFlow.segmentId},#{segmentFlow.flow},now())
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        flow = VALUES(flow),
+        updatetime = VALUES(updatetime)
+    </insert>
+    <select id="queryMaxTimeStampOfSatur" resultType="java.math.BigInteger">
+        SELECT
+            max(`timestamp`)
+        FROM
+            #signal#.adm_tfc_opt_inter_saturation_rt
+    </select>
+</mapper>

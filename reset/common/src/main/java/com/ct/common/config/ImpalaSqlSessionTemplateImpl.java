@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * @author chen.cheng
  */
 @Configuration
-@MapperScan(basePackages = "com.ztesoft.timer.dao.impala", sqlSessionTemplateRef = "impalaSqlSessionTemplate")
+@MapperScan(basePackages = "com.ct.biz.dao.impala", sqlSessionTemplateRef = "impalaSqlSessionTemplate")
 public class ImpalaSqlSessionTemplateImpl {
     /**
      * Primary sql session factory sql session factory.

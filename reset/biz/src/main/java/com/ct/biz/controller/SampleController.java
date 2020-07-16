@@ -1,6 +1,8 @@
 package com.ct.biz.controller;
 
 import com.ct.biz.bean.VipVO;
+import com.ct.biz.dao.impala.ITfcImpalaScheduleDAO;
+import com.ct.biz.dao.mysql.TfcEpdDao;
 import com.ct.biz.strategy.IVipStrategy;
 import com.ct.biz.strategy.VipStrategyResolver;
 import com.ct.common.annotation.Log;
@@ -38,6 +40,12 @@ public class SampleController {
 
     @Autowired
     private VipStrategyResolver vipStrategyResolver;
+
+    @Autowired
+    private ITfcImpalaScheduleDAO iTfcImpalaScheduleDAO;
+
+    @Autowired
+    private TfcEpdDao tfcEpdDao;
     /**
      * The Async service.
      *
@@ -74,4 +82,17 @@ public class SampleController {
         return Result.success("");
     }
 
+    /**
+     * Submit string.
+     *
+     * @return the string
+     * @author chen.cheng
+     */
+    @ApiOperation(value = "map", notes = "map")
+    @RequestMapping(value = "/map", method = RequestMethod.GET)
+    @PassToken
+    @Log(title = "SampleController", action = "map")
+    public Result map() throws Exception {
+        return Result.success(tfcEpdDao.queryMaxTimeStampOfSatur());
+    }
 }
