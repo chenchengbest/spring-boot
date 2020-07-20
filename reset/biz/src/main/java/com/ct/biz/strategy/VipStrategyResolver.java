@@ -1,5 +1,6 @@
 package com.ct.biz.strategy;
 
+import com.ct.common.annotation.Log;
 import com.ct.common.annotation.VipStrategy;
 import com.ct.common.usrException.BusinessException;
 import org.springframework.beans.BeansException;
@@ -66,6 +67,7 @@ public class VipStrategyResolver implements InitializingBean, ApplicationContext
      * @return the handler
      * @author chen.cheng
      */
+    @Log(title = "策略器门面",action = "getHandler")
     public IVipStrategy getHandler(String vipCode) throws BusinessException {
         if (!vipStrategyResolverMap.containsKey(vipCode)) {
             throw new BusinessException(String.format("不存在类型为：{%s}策略", vipCode));
