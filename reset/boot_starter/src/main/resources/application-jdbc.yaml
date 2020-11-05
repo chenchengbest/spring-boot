@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    druid:
+      first:
+        driver-class-name: org.mariadb.jdbc.Driver
+        initial-size: 1
+        max-active: 20
+        max-wait: 60000
+        min-evictable-idle-time-millis: 1800000
+        min-idle: 5
+        password: ${mysql.screen_model.password}
+        test-while-idle: true
+        time-between-eviction-runs-millis: 300000
+        url: jdbc:mariadb://${mysql.screen_model.ip}:${mysql.screen_model.port}/${mysql.screen_model.dbname}?zeroDateTimeBehavior=convertToNull&characterEncoding=utf8
+        username: ${mysql.screen_model.username}
+        validation-query: SELECT 1
+      second:
+        driver-class-name: org.mariadb.jdbc.Driver
+        initial-size: 1
+        max-active: 20
+        max-wait: 60000
+        min-evictable-idle-time-millis: 1800000
+        min-idle: 5
+        password: ${mysql.dws_m.password}
+        test-while-idle: true
+        time-between-eviction-runs-millis: 300000
+        url: jdbc:mariadb://${mysql.dws_m.ip}:${mysql.dws_m.port}/${mysql.dws_m.dbname}?zeroDateTimeBehavior=convertToNull&characterEncoding=utf8
+        username: ${mysql.dws_m.username}
+        validation-query: SELECT 1
+      impala:
+        driver-class-name: com.cloudera.impala.jdbc41.Driver
+        password: '""'
+        url: jdbc:impala://${mysql.impala.ip}:${mysql.impala.port}/${mysql.impala.dbname}
+        username: '""'
+      oracle:
+        driver-class-name: oracle.jdbc.OracleDriver
+        initial-size: 1
+        max-active: 20
+        max-wait: 60000
+        min-evictable-idle-time-millis: 1800000
+        min-idle: 5
+        password: ${oracle.driver_licence.password}
+        test-while-idle: true
+        time-between-eviction-runs-millis: 300000
+        url: jdbc:oracle:thin:@${oracle.driver_licence.ip}:${oracle.driver_licence.port}:${oracle.driver_licence.sid}
+        username: ${oracle.driver_licence.username}
+        validation-query: SELECT 1 FROM DUAL

@@ -12,10 +12,6 @@ import org.springframework.context.annotation.PropertySources;
  * @author chen.cheng
  */
 @SpringBootApplication
-@PropertySources(@PropertySource(value = {
-        "classpath:jdbc.properties",
-        "classpath:global.properties"
-}))
 @ComponentScan("com.ct.*")
 public class ApplicationStarter {
 

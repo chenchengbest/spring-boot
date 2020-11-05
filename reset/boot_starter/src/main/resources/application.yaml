@@ -1,0 +1,15 @@
+database:
+  schema:
+    signal: sigcontrol_copy_330200
+logging:
+  level:
+    com:
+      ct:
+        '*': debug
+server:
+  port: 8081
+spring:
+  profiles:
+    include:
+      - global
+      - jdbc

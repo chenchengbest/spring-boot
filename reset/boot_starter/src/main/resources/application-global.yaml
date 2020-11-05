@@ -1,0 +1,75 @@
+kafka:
+  bootstrapServer: 10.45.70.125:9092,10.45.70.34:9092
+mysql:
+  devcoper:
+    dbname: devcoper_330200
+    ip: 10.45.70.17
+    password: iwhaleC@
+    port: 3306
+    username: dev
+  dwd_m:
+    dbname: dwd_m_500101
+    ip: 10.45.70.17
+    password: iwhaleC@
+    port: 3306
+    username: dev
+  dws_m:
+    dbname: dws_m_320105
+    ip: 10.45.70.17
+    password: user_model
+    port: 3306
+    username: user_model
+  event_handle:
+    dbname: event_handle_330200
+    ip: 10.45.70.17
+    password: ''
+    port: 3306
+    username: root
+  guide:
+    dbname: guide_330200
+    ip: 10.45.70.17
+    password: ''
+    port: 3306
+    username: root
+  impala:
+    dbname: dsp
+    ip: 10.45.70.123
+    password: ''
+    port: 21050
+    username: ''
+  portal:
+    dbname: portal_330200
+    ip: 10.45.70.17
+    password: ''
+    port: 3306
+    username: root
+  screen_model:
+    dbname: screen_model
+    ip: 10.45.70.17
+    password: user_model
+    port: 3306
+    username: user_model
+  sigcontrol:
+    dbname: sigcontrol_interaccount
+    ip: 10.45.7.31
+    password: ''
+    port: 3306
+    username: root
+  sigcontrolbase:
+    dbname: sigcontrolbase_330200
+    ip: 10.45.7.31
+    password: ''
+    port: 3306
+    username: root
+oracle:
+  driver_licence:
+    ip: 10.45.70.98
+    password: test_imcp_infra_nb
+    port: 1521
+    sid: uboss
+    username: test_imcp_infra_nb
+redis:
+  ip: 127.0.0.1
+  port: 6379
+zk:
+  connectString: 10.45.70.121:2181,10.45.70.122:2181
