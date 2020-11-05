@@ -2,7 +2,7 @@ package com.ct.biz.strategy;
 
 import com.ct.common.annotation.Log;
 import com.ct.common.annotation.VipStrategy;
-import com.ct.common.usrException.BusinessException;
+import com.ct.common.exception.BusinessException;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;

@@ -1,8 +1,7 @@
 package com.ct.common.aop;
 
 import com.ct.common.bean.ApiResult;
-import com.ct.common.thread.ExecutorConfig;
-import com.ct.common.usrException.BusinessException;
+import com.ct.common.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.ConversionNotSupportedException;

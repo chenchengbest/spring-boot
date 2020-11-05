@@ -1,4 +1,4 @@
-package com.ct.common.usrException;
+package com.ct.common.exception;
 
 /**
  * The type Cust exception.
