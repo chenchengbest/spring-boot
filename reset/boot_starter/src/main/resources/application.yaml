@@ -13,3 +13,14 @@ spring:
     include:
       - global
       - jdbc
+  redis:
+    host: ${redis.ip}
+    password:
+    port: ${redis.port}
+    timeout: 5000
+    jedis:
+      pool:
+        max-idle: 20
+        max-wait: 3000
+        max-active: 100
+        min-idle: 0
