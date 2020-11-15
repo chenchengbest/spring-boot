@@ -62,12 +62,13 @@ public class RedisDistributedLock {
      *      if kuNum and tonumber(kuNum) >= 1 then
      *        return redis.call('DECR',kuName);
      *      else
-     *        return null;
+     *        return nil; // 返回null会脚本错误
      *      end
      *  end
      * else
      *  return -1;
      * end
+     *
      * @author chen.cheng
      */
     private final String DECR = "local kusName = KEYS[1]; local key = KEYS[2]; "
@@ -85,7 +86,7 @@ public class RedisDistributedLock {
      * local kuName = redis.call('HGET',kusName,key);
      * local kuNum = redis.call('get',kuName);
      * if uid == KEYS[3] then
-     *  if kuNum ~=nil and tonumber(kuNum) <= 0 then
+     *  if kuNum and tonumber(kuNum) <= 0 then
      *  redis.call('hdel',kusName,key);
      *  redis.call('del',kuName);
      *  end
